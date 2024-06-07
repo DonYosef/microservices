@@ -27,4 +27,9 @@ public class ProductServiceImpl implements IProductService{
     public void save(Product product) {
         productRepository.save(product);
     }
+
+    @Override
+    public List<Product> findByIdUser(Long idUser) {
+        return productRepository.findAllByUserId(idUser);
+    }
 }

@@ -21,6 +21,4 @@ public class User {
     @Column(name = "last_name")
     private String lastname;
     private String email;
-    @Column(name = "product_id")
-    private Long productId;
 }

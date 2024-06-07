@@ -20,4 +20,6 @@ public class Product {
     private String name;
     private String description;
     private int price;
+    @Column(name = "user_id")
+    private Long userId;
 }

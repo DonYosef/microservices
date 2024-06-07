@@ -1,8 +1,10 @@
 package com.microservice.user.services;
 
+import com.microservice.user.client.ProductClient;
+import com.microservice.user.dto.ProductDTO;
 import com.microservice.user.entities.User;
 import com.microservice.user.persistence.UserRepository;
-import com.netflix.discovery.converters.Auto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +12,11 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements IUserService{
 
-    @Auto
+    @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ProductClient productClient;
 
     @Override
     public List<User> findAll() {
@@ -29,7 +34,11 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public List<User> findByIdProduct(Long idProduct) {
-        return userRepository.findAllByProductId(idProduct);
+    public List<ProductDTO> findProductsByIdUser(Long idUser) {
+        //Obtenemos el usuarios
+        User user = userRepository.findById(idUser).orElseThrow();
+
+        //Obtenemos los productos del usuario
+        return productClient.findAllProductByUser(idUser);
     }
 }

@@ -11,4 +11,6 @@ public interface IProductService {
     Product findById(Long id);
 
     void save(Product product);
+
+    List<Product> findByIdUser(Long idUser);
 }
