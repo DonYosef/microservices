@@ -10,6 +10,6 @@ import java.util.List;
 @FeignClient(name = "msvc-product", url = "localhost:8090")
 public interface ProductClient {
 
-    @GetMapping("/search-by-product/{idUser}")
+    @GetMapping("/api/product/search-by-user/{idUser}")
     List<ProductDTO> findAllProductByUser(@PathVariable Long idUser);
 }
