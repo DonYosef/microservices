@@ -17,8 +17,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private  String name;
-    @Column(name = "last_name")
-    private String lastname;
+    private  String username;
     private String email;
+    private String firstname;
+    private String lastname;
+    private String country;
+    private String password;
+    private RoleDTO role;
 }

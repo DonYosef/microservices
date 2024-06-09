@@ -30,7 +30,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.findById(id));
     }
 
-    @GetMapping("/search-by-product/{idUser}")
+    @GetMapping("/search-by-user/{idUser}")
     public ResponseEntity<?> findByIdUser(@PathVariable Long idUser){
         return ResponseEntity.ok(productService.findByIdUser(idUser));
     }
