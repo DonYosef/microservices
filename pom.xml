@@ -23,6 +23,7 @@
     <module>microservice-config</module>
     <module>microservice-product</module>
     <module>microservice-user</module>
+    <module>auth-service</module>
   </modules>
 
   <properties>
