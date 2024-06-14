@@ -1,14 +1,16 @@
 package com.microservice.user.controller;
 
 import com.microservice.user.entities.User;
+import com.microservice.user.error.NoAuthException;
 import com.microservice.user.services.IUserService;
-import feign.FeignException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpServerErrorException;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -23,13 +25,8 @@ public class UserController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> findAllUser(){
-        try {
-            return ResponseEntity.ok(userService.findAll());
-        }catch (HttpServerErrorException.InternalServerError e){
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
+    public ResponseEntity<?> findAllUser() throws NoAuthException{
+        return ResponseEntity.ok(userService.findAll());
     }
 
     @GetMapping("/search/{id}")

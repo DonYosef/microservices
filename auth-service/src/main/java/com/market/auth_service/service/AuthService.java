@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthService {
 
@@ -24,8 +26,8 @@ public class AuthService {
         return "User added!";
     }
 
-    public String generateToken(String email){
-        return jwtService.generateToken(email);
+    public String generateToken(String email, Long userId){
+        return jwtService.generateToken(email, userId);
     }
 
     public void validateToken(String token){

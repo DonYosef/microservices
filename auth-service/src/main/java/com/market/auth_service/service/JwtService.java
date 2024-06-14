@@ -10,6 +10,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class JwtService {
@@ -20,8 +21,9 @@ public class JwtService {
         Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token);
     }
 
-    public String generateToken(String userName) {
+    public String generateToken(String userName, Long userId) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("userId", userId);
         return createToken(claims, userName);
     }
 

@@ -16,12 +16,21 @@ spring:
             - Path=/api/user/**
           filters:
             - 'AuthenticationFilter'
+
         - id: product
           uri: 'http://localhost:8090'
           predicates:
             - Path=/api/product/**
           filters:
             - 'AuthenticationFilter'
+
+        - id: crud-product
+          uri: 'http://localhost:8090'
+          predicates:
+            - Path=/api/crud-product/**
+          filters:
+            - 'AuthenticationFilter'
+
         - id: auth
           uri: 'http://localhost:9080'
           predicates:

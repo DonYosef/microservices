@@ -13,4 +13,10 @@ public interface IProductService {
     void save(Product product);
 
     List<Product> findByIdUser(Long idUser);
+
+    //Update
+    Product updateProduct(Product product, Long id, Long tokenUserId);
+    //Delete
+    void deleteProduct(Long id, Long userId);
+
 }

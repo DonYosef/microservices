@@ -9,16 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/product")
 @RestController
-public class ProductController {
+public class ProductPublicController {
 
     @Autowired
     private IProductService productService;
-
-    @PostMapping("/create")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody Product product){
-        productService.save(product);
-    }
 
     @GetMapping("/all")
     public ResponseEntity<?> findAllProduct(){

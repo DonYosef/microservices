@@ -3,7 +3,9 @@ package com.microservice.user.services;
 import com.microservice.user.client.ProductClient;
 import com.microservice.user.dto.ProductDTO;
 import com.microservice.user.entities.User;
+import com.microservice.user.error.NoAuthException;
 import com.microservice.user.persistence.UserRepository;
+import com.microservice.user.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,7 @@ public class UserServiceImpl implements IUserService{
     private ProductClient productClient;
 
     @Override
-    public List<User> findAll() {
+    public List<User> findAll() throws NoAuthException {
         return (List<User>) userRepository.findAll();
     }
 
@@ -40,5 +42,10 @@ public class UserServiceImpl implements IUserService{
 
         //Obtenemos los productos del usuario
         return productClient.findAllProductByUser(idUser);
+    }
+    //PRODUCT IN USER
+    @Override
+    public void saveProduct(ProductDTO productDTO) {
+        productClient.save(productDTO);
     }
 }

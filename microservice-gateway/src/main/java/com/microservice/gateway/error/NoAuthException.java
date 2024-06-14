@@ -1,4 +1,4 @@
-package com.microservice.user.error;
+package com.microservice.gateway.error;
 
 public class NoAuthException extends Exception{
 

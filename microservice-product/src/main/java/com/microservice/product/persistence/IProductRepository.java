@@ -8,3 +8,5 @@ import java.util.List;
 public interface IProductRepository extends CrudRepository<Product, Long> {
     List<Product> findAllByUserId(Long idUser);
 }
+
+
