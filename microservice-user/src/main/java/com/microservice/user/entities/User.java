@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Builder
-@Table(name = "users")
+@Table(name = "user_credential")
 @AllArgsConstructor
 @NoArgsConstructor
 public class  User {
@@ -17,7 +17,6 @@ public class  User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
     private String email;
     private String firstname;
     private String lastname;
